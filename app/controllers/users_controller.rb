@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @microposts = @user.microposts.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def create
